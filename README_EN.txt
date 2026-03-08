@@ -44,7 +44,7 @@ Steps:
 2.Open the extensions management page
 3.Enable Developer Mode
 4.Click Load unpacked
-5.Select the project directory ai-wait-mode/
+5.Select the project directory
 
 The extension will then run locally.
 
