@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ThinkBreak</title>
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <header class="hero">
+        <p class="eyebrow">ThinkBreak</p>
+        <h1>Take a break while AI thinks</h1>
+        <p class="summary">If a reply takes too long, the extension opens your chosen break-site tab and brings you back when the answer is ready.</p>
+      </header>
+
+      <form id="settings-form" class="settings">
+        <label class="field checkbox">
+          <span>Enable extension</span>
+          <input id="enabled" name="enabled" type="checkbox" />
+        </label>
+
+        <label class="field">
+          <span>Trigger threshold (seconds)</span>
+          <input id="thresholdSeconds" name="thresholdSeconds" type="number" min="3" max="120" step="1" />
+        </label>
+
+        <label class="field">
+          <span>Redirect target</span>
+          <select id="shortSite" name="shortSite">
+            <option value="tiktok">TikTok</option>
+            <option value="youtube-shorts">YouTube Shorts</option>
+            <option value="douyin">Douyin</option>
+            <option value="xiaohongshu">Xiaohongshu</option>
+            <option value="custom">Custom website</option>
+          </select>
+        </label>
+
+        <label id="custom-url-field" class="field hidden">
+          <span>Custom website URL</span>
+          <input
+            id="customShortUrl"
+            name="customShortUrl"
+            type="url"
+            inputmode="url"
+            placeholder="https://example.com"
+          />
+        </label>
+
+        <label class="field checkbox">
+          <span>Debug logging</span>
+          <input id="debug" name="debug" type="checkbox" />
+        </label>
+      </form>
+
+      <section class="status-card">
+        <h2>Runtime status</h2>
+        <dl class="status-grid">
+          <div>
+            <dt>Platform</dt>
+            <dd id="platform-value">-</dd>
+          </div>
+          <div>
+            <dt>State</dt>
+            <dd id="state-value">-</dd>
+          </div>
+          <div>
+            <dt>AI Tab</dt>
+            <dd id="ai-tab-value">-</dd>
+          </div>
+          <div>
+            <dt>Short Tab</dt>
+            <dd id="short-tab-value">-</dd>
+          </div>
+          <div class="status-span">
+            <dt>Target URL</dt>
+            <dd id="target-url-value">-</dd>
+          </div>
+        </dl>
+        <p id="saved-message" class="saved-message"></p>
+      </section>
+    </main>
+
+    <script type="module" src="./popup.js"></script>
+  </body>
+</html>

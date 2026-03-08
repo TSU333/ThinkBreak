@@ -1,0 +1,101 @@
+{
+  "manifest_version": 3,
+  "name": "ThinkBreak",
+  "description": "When an AI reply takes too long, jump to a short-video tab and come back when the answer is ready.",
+  "version": "0.1.0",
+  "minimum_chrome_version": "120",
+  "icons": {
+    "16": "public/icons/icon-16.png",
+    "32": "public/icons/icon-32.png",
+    "48": "public/icons/icon-48.png",
+    "128": "public/icons/icon-128.png"
+  },
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://chat.openai.com/*",
+    "https://claude.ai/*",
+    "https://gemini.google.com/*",
+    "https://grok.com/*",
+    "https://x.com/*",
+    "https://tiktok.com/*",
+    "https://*.tiktok.com/*",
+    "https://youtube.com/*",
+    "https://*.youtube.com/*",
+    "https://youtu.be/*",
+    "https://douyin.com/*",
+    "https://*.douyin.com/*",
+    "https://xiaohongshu.com/*",
+    "https://*.xiaohongshu.com/*",
+    "https://*.xiaohongshu.cn/*",
+    "https://xhslink.com/*",
+    "https://*.xhslink.com/*"
+  ],
+  "background": {
+    "service_worker": "dist/background/service-worker.js",
+    "type": "module"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "dist/content/page-probe.js"
+      ],
+      "matches": [
+        "https://gemini.google.com/*",
+        "https://grok.com/*",
+        "https://x.com/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_title": "ThinkBreak",
+    "default_popup": "dist/popup/popup.html",
+    "default_icon": {
+      "16": "public/icons/icon-16.png",
+      "32": "public/icons/icon-32.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*"
+      ],
+      "js": [
+        "dist/content/chatgpt.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://claude.ai/*"
+      ],
+      "js": [
+        "dist/content/claude.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://gemini.google.com/*"
+      ],
+      "js": [
+        "dist/content/gemini.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://grok.com/*",
+        "https://x.com/i/grok*"
+      ],
+      "js": [
+        "dist/content/grok.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
