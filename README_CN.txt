@@ -206,4 +206,4 @@ Phase 3
 
 许可证
 
-MIT License
+Apache License 2.0 License
